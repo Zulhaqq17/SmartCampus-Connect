@@ -3,6 +3,8 @@ package my.utem.bitp3123.enrolment_service;
 import org.springframework.stereotype.*;
 import org.springframework.web.client.*;
 import java.util.*;
+import java.io.PrintWriter;
+import java.net.Socket;
 
 
 @Service
@@ -20,6 +22,21 @@ public class EnrolmentService {
 		return enrolments;
 	}
 	
+	// Add this helper method inside EnrolmentService.java to transmit notifications
+	private void sendNetworkNotification(String message) {
+	    // Connect to the Notification Service running on localhost port 9999
+	    try (Socket socket = new Socket("localhost", 9999);
+	         PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
+	        
+	        out.println(message); // Drop off the payload string
+	        System.out.println("Asynchronous notification trigger dispatched over socket.");
+	        
+	    } catch (Exception e) {
+	        // Safe fallback if the Notification server happens to be offline
+	        System.err.println("Failed to dispatch real-time alert: Notification Service unreachable.");
+	    }
+	}
+	
 	public Enrolment enrollStudent(int studentId, String courseCode) {
 		Enrolment enrolment = new Enrolment();
 		enrolment.setEnrolmentId(nextId++);
@@ -33,6 +50,7 @@ public class EnrolmentService {
 			
 			// if request succeed, the student is valid
 			enrolment.setStatus("Success");
+			sendNetworkNotification("STUDENT_ID: " + studentId + " has successfully registered for course: " + courseCode);
 		} catch (HttpClientErrorException.NotFound e) {
 			System.out.println("Validation failed: Student ID " + studentId + "does not exist.");
 			enrolment.setStatus("REJECTED - Invalid Student");
