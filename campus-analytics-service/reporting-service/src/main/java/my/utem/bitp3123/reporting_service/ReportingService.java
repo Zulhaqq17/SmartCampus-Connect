@@ -14,11 +14,11 @@ public class ReportingService {
 
     public Map<String, Long> getEnrolmentCountByProgramme() {
         try {
-            //  Fetch all students from Student Service
+            //  Fetch all students from Students Service
             StudentDTO[] studentsArray = restTemplate.getForObject(STUDENT_SERVICE_URL, StudentDTO[].class);
             List<StudentDTO> students = studentsArray != null ? Arrays.asList(studentsArray) : Collections.emptyList();
 
-            // Fetch all enrollments from Enrolment Service
+            // Fetch all enrollments from Enrollment Service
             EnrolmentDTO[] enrolmentsArray = restTemplate.getForObject(ENROLMENT_SERVICE_URL, EnrolmentDTO[].class);
             List<EnrolmentDTO> enrolments = enrolmentsArray != null ? Arrays.asList(enrolmentsArray) : Collections.emptyList();
 
