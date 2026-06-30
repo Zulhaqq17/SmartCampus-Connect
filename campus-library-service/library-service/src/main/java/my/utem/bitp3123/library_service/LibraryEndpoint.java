@@ -23,7 +23,7 @@ public class LibraryEndpoint {
         // Create the response object generated from XSD rules
         BookBookResponse response = new BookBookResponse();
         
-        // Mocking a successful database transactional assignment
+        // Mocking a successful database transactional assignment.
         response.setBookingId(777); 
         response.setStatus("CONFIRMED");
         response.setConfirmationMessage("Book with ISBN " + request.getIsbn() + " successfully checked out to Student " + request.getStudentId());
