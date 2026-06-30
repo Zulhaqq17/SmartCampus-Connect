@@ -16,9 +16,7 @@ public class LibraryEndpoint {
     @ResponsePayload // tell Spring to convert the returned Java object back into XML text
     public BookBookResponse handleBookBooking(@RequestPayload BookBookRequest request) {
         
-        System.out.println("=== [SOAP Request Received] ===");
-        System.out.println("Student ID: " + request.getStudentId());
-        System.out.println("Target Book ISBN: " + request.getIsbn());
+       
 
         // Create the response object generated from XSD rules
         BookBookResponse response = new BookBookResponse();
