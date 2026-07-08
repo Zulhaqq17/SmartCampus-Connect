@@ -1,7 +1,6 @@
 package my.utem.bitp3123.enrolment_service;
 
 public class Enrolment {
-	
 	private Integer enrolmentId; // guna Integer wrapper object instead of 
 								 //primitive "Int" because primitives cannot be null
 	private Integer studentId;
@@ -50,7 +49,4 @@ public class Enrolment {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-
 }
