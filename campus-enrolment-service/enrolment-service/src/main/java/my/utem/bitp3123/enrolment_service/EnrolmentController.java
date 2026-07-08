@@ -4,7 +4,6 @@ import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
-
 @RestController
 @RequestMapping("/api/enrolments")
 public class EnrolmentController {
