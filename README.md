@@ -1,5 +1,7 @@
 # SmartCampus Connect — BITP3123 DISTRIBUTED APPLICATION DEVELOPMENT PROJECT
 
+https://youtu.be/Cjnr8aCaOD8 -- >> YOUTUBE PRESENTATION LINK
+
 SmartCampus Connect is a campus operations platform designed using a distributed microservices architecture. The system spans 5 independent modular subsystems running across various network topologies, orchestrating interactions using REST/JSON, Enterprise SOAP/XML, and multi-threaded raw TCP Sockets.
 
 ---
