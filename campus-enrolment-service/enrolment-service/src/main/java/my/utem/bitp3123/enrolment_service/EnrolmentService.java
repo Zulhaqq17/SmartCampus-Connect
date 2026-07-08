@@ -6,7 +6,6 @@ import java.util.*;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-
 @Service
 public class EnrolmentService {
 	private final List<Enrolment> enrolments = Collections.synchronizedList(new ArrayList<>());
