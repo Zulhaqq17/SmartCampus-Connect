@@ -14,15 +14,15 @@ public class ReportingService {
 
     public Map<String, Long> getEnrolmentCountByProgramme() {
         try {
-            //  Fetch all students from Student Service
+            //  Fetch all students from Students Service
             StudentDTO[] studentsArray = restTemplate.getForObject(STUDENT_SERVICE_URL, StudentDTO[].class);
             List<StudentDTO> students = studentsArray != null ? Arrays.asList(studentsArray) : Collections.emptyList();
 
-            // Fetch all enrollments from Enrolment Service
+            // Fetch all enrollments from Enrollment Service
             EnrolmentDTO[] enrolmentsArray = restTemplate.getForObject(ENROLMENT_SERVICE_URL, EnrolmentDTO[].class);
             List<EnrolmentDTO> enrolments = enrolmentsArray != null ? Arrays.asList(enrolmentsArray) : Collections.emptyList();
 
-            // ambik student IDs yang ada "Success"
+            // Take studentID's that have "Success"
             Set<Integer> successfullyEnrolledStudentIds = new HashSet<>();
             for (EnrolmentDTO e : enrolments) {
                 if (e != null && "Success".equalsIgnoreCase(e.status())) {
@@ -30,12 +30,12 @@ public class ReportingService {
                 }
             }
 
-            //  Count successful enrollments grouped by academic programme
+            //  Count successful enrollments grouped by academic program
             Map<String, Long> reportMap = new HashMap<>();
             for (StudentDTO student : students) {
                 if (student != null && successfullyEnrolledStudentIds.contains(student.id())) {
                     String prog = student.programme();
-                    // kalau programme tak ada lagi start dari 0 + 1
+                    // if no more program start with 0 + 1
                     reportMap.put(prog, reportMap.getOrDefault(prog, 0L) + 1L);
                 }
             }

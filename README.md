@@ -6,7 +6,7 @@ SmartCampus Connect is a campus operations platform designed using a distributed
 
 ## 🏗️ System Architecture & Network Topology
 
-The application decouples its domains into dedicated processing nodes to maximize fault isolation and systematic scalability:
+The application decouples its domains into dedicated processing nodes to maximize fault isolation and systemic scalability:
 
 | Module / Service Name | Protocol / Architecture Style | Network Port | Database / Persistence Strategy |
 | :--- | :--- | :--- | :--- |
